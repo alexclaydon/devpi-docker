@@ -1,15 +1,19 @@
-version: '3'
+name: devpi-docker
 
 services:
-  devpi:
+  devpi-server:
     build: .
+    container_name: devpi-server
     ports:
-      - "3141:3141"
+      - ${MAPPED_PORT}:${DEVPISERVER_PORT}
     environment:
-      - DEVPI_OUTSIDE_URL=http://localhost:3141
+      - DEVPI_OUTSIDE_URL=${DEVPI_OUTSIDE_URL}
+      - DEVPISERVER_HOST=${DEVPISERVER_HOST}
+      - DEVPISERVER_PORT=${DEVPISERVER_PORT}
+      - DEVPISERVER_SERVERDIR=${DEVPISERVER_SERVERDIR}
+      - DEVPI_ROOT_PASSWORD=${DEVPI_ROOT_PASSWORD}
+      - DEVPI_USER=${DEVPI_USER}
+      - DEVPI_USER_PASSWORD=${DEVPI_USER_PASSWORD}
     volumes:
-      - devpi-data:/data/devpi
+      - ${DATA_VOLUME}:/data/devpi
     restart: unless-stopped
-
-volumes:
-  devpi-data:

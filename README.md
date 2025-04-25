@@ -31,26 +31,13 @@ docker-compose up -d
 
 3. Access devpi-web at: http://localhost:3141
 
-## Initial Setup
-
-After starting the container for the first time, you may want to create a user and index:
-
-```bash
-# Create a root user
-docker-compose exec devpi devpi use http://localhost:3141
-docker-compose exec devpi devpi login root --password=''
-docker-compose exec devpi devpi user -c testuser password=testpassword
-docker-compose exec devpi devpi login testuser --password=testpassword
-docker-compose exec devpi devpi index -c dev
-```
-
 ## Environment Variables
 
 You can customize the following environment variables in the docker-compose.yml file:
 
 - `DEVPI_HOST`: Host to bind to (default: 0.0.0.0)
 - `DEVPI_PORT`: Port to listen on (default: 3141)
-- `DEVPI_SERVERDIR`: Directory where devpi stores its data (default: /data/devpi)
+- `DEVPISERVER_SERVERDIR`: Directory where devpi stores its data (default: /data/devpi)
 - `DEVPI_OUTSIDE_URL`: External URL for accessing devpi (default: http://localhost:3141)
 
 ## Using devpi as a PyPI Mirror
