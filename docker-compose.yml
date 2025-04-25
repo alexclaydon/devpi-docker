@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  devpi:
+    build: .
+    ports:
+      - "3141:3141"
+    environment:
+      - DEVPI_OUTSIDE_URL=http://localhost:3141
+    volumes:
+      - devpi-data:/data/devpi
+    restart: unless-stopped
+
+volumes:
+  devpi-data:

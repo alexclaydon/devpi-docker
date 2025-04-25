@@ -1,0 +1,8 @@
+---
+devpi-server:
+  host: ${DEVPI_HOST}
+  port: ${DEVPI_PORT}
+  outside-url: ${DEVPI_OUTSIDE_URL}
+  serverdir: ${DEVPI_SERVERDIR}
+  plugins:
+    - devpi-web
